@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  front:
+    build: ./rick-and-morty-front
+    restart: always
+    env_file: ./rick-and-morty-front/.env
+    ports:
+      - 5173:5173
+    links:
+      - mongo
+      - beckend
+
+  beckend:
+    restart: always
+    build: ./rick-and-morty-front
+    ports:
+      - "1770:1770"
+    env_file: ./rick-and-morty-front/.env
+    links:
+      - mongo
