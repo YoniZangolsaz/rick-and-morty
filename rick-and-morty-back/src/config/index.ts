@@ -8,7 +8,6 @@ const config = {
     },
     mongo: {
         uri: env.get('MONGO_URI').required().asString(),
-        collectionName: env.get('COLLECTION_NAME').required().asString(),
         userCollectionName: env.get('USER_COLLECTION_NAME').required().asString(),
     },
     keys: {

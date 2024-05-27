@@ -19,9 +19,9 @@ services:
 
   beckend:
     restart: always
-    build: ./rick-and-morty-front
+    build: ./rick-and-morty-back
     ports:
       - "1770:1770"
-    env_file: ./rick-and-morty-front/.env
+    env_file: ./rick-and-morty-back/.env
     links:
       - mongo
