@@ -14,7 +14,7 @@ strat the backend project - run "npm run dev"
 
 open new terminal
 
-go to the rick-and-morty-front - run "cd ..\rick-and-morty-front\"
+go to the rick-and-morty-front - run "cd .\rick-and-morty-front\"
 
 install the packages - run "npm i"
 

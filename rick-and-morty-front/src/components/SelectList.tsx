@@ -22,7 +22,7 @@ const SelectList = ({
   value,
 }: SelectListProps) => {
   return (
-    <FormControl sx={{ minWidth: 150 }}>
+    <FormControl sx={{ minWidth: 200 }}>
       <InputLabel>{inputLabel}</InputLabel>
       <Select
         value={value || ""}
