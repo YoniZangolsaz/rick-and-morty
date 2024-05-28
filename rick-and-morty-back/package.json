@@ -13,20 +13,7 @@
     "prettier:fix": "prettier --config .prettierrc.js 'src/**/*.ts' --write",
     "clean": "rimraf dist"
   },
-  "author": "Alexander Gurevich",
-  "license": "ISC",
-  "directories": {
-    "test": "tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/770menahem/tamplate-express.git"
-  },
   "keywords": [],
-  "bugs": {
-    "url": "https://github.com/770menahem/tamplate-express/issues"
-  },
-  "homepage": "https://github.com/770menahem/tamplate-express#readme",
   "dependencies": {
     "axios": "^1.7.2",
     "body-parser": "^1.20.0",

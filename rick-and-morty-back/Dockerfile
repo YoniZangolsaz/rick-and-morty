@@ -16,3 +16,4 @@ WORKDIR /dist
 CMD node index.js
 
 EXPOSE 6060
+
