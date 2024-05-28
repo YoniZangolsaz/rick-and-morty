@@ -10,6 +10,10 @@ install the packages - run "npm i"
 
 create the mongo image - run "docker-compose up"
 
+open new terminal
+
+go to rick-and-morty-back - run "cd .\rick-and-morty-back\"
+
 strat the backend project - run "npm run dev"
 
 open new terminal
