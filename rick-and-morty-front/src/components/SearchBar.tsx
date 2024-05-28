@@ -31,21 +31,24 @@ const SearchBar = ({ searchClick }: SearchBarProps) => {
           },
         }}
       >
-        {selectType &&
-          (selectType!.value === "character" ||
-            selectType!.value === "location" ||
-            selectType!.value === "episode") && (
-            <TextField
-              variant="outlined"
-              required
-              label="page number"
-              placeholder="Example: 1"
-              value={searchValue}
-              onChange={(e) => {
-                setSearchValue(e.target.value);
-              }}
-            />
-          )}
+        {selectType && (
+          <TextField
+            variant="outlined"
+            required
+            label={
+              selectType!.value === "character" ||
+              selectType!.value === "location" ||
+              selectType!.value === "episode"
+                ? "page number"
+                : "page id"
+            }
+            placeholder="Example: 1"
+            value={searchValue}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+            }}
+          />
+        )}
 
         <SelectList
           inputLabel="request type"

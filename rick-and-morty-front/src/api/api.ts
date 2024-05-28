@@ -22,3 +22,11 @@ export const getAll = async (dataType: string, pageNumber: string) => {
   );
   return characters.data;
 };
+
+export const getById = async (dataType: string, id: string) => {
+  const character = await axios.get(
+    `${baseUrl}/${dataType}/id/${id}`,
+    getTokenHeader()
+  );
+  return character.data;
+};

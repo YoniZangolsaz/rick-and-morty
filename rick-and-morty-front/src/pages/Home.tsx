@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Character from "../types/character.type";
 import Location from "../types/location.type";
 import Episode from "../types/episode.type";
-import { getAll } from "../api/api";
+import { getAll, getById } from "../api/api";
 import SearchBar from "../components/SearchBar";
 import { messageType } from "./Login";
 import SnackBar from "../components/SnackBar";
@@ -47,18 +47,30 @@ const Home = () => {
     mutationFn: (data: dataType) => getAll(data.type, data.pageNumber),
   });
 
+  const { mutateAsync: getDataById } = useMutation({
+    mutationFn: (data: dataType) => getById(data.type, data.pageNumber),
+  });
+
   const getDataSubmit = async (selectType: string, searchValue: string) => {
     try {
       setSearchTerm("");
       setDataResults([]);
-      setSelect(selectType);
+
       const dataType: dataType = {
         type: selectType,
         pageNumber: searchValue,
       };
 
-      const allData = await getAllData(dataType);
-      setDataResults(allData.results);
+      if (selectType.includes("ById")) {
+        dataType.type = selectType.replace("ById", "");
+        setSelect(dataType.type);
+        const data = await getDataById(dataType);
+        setDataResults([data]);
+      } else {
+        setSelect(selectType);
+        const allData = await getAllData(dataType);
+        setDataResults(allData.results);
+      }
     } catch (e) {
       setOpenMessage({
         open: true,
@@ -78,7 +90,7 @@ const Home = () => {
       <Box sx={styles.mainBox}>
         <Box sx={styles.secBox}>
           <SearchBar searchClick={getDataSubmit} />
-          {dataResults && dataResults.length > 0 && (
+          {dataResults && dataResults.length > 1 && (
             <Box sx={styles.searchBox}>
               <SearchInput
                 options={dataResults.map((data) => data.name)}
